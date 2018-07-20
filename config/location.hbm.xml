@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- 
+NOTE:   
+We are using the annotations approach and hence no need to use the domain 
+hibernate mapping files. Provided here as merely a refrence.
+-->
+<hibernate-mapping default-lazy="false">
+    <class name="com.fhds.model.domain.Location" table="location" catalog="regis">
+        <id name="locationId" type="java.lang.Integer">
+            <column name="idLOCATION" />
+            <generator class="increment"></generator>            
+        </id>
+        <property name="city" type="java.lang.String">
+            <column name="CITY" length="20" />
+        </property>
+        <set name="carSet" inverse="true" cascade="save-update">
+            <key>
+                <column name="LOCATION_FK" not-null="true" />
+            </key>
+            <one-to-many class="com.fhds.model.domain.Car" />
+        </set>
+    </class>
+</hibernate-mapping>

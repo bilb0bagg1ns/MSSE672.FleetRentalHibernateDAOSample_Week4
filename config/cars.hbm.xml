@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- 
+NOTE:   
+We are using the annotations approach and hence no need to use the domain 
+hibernate mapping files. Provided here as merely a refrence.
+-->
+<hibernate-mapping default-lazy="false">
+    <class name="com.fhds.model.domain.Car" table="cars" catalog="regis">
+        <id name="carId" type="java.lang.Integer">
+            <column name="idCAR" />
+            <generator class="increment"></generator>            
+        </id>
+        <many-to-one name="location" class="com.fhds.model.domain.Location" fetch="select">
+            <column name="LOCATION_FK" not-null="true" />
+        </many-to-one>
+        <property name="engineType" type="java.lang.String">
+            <column name="engine_type" length="20" />
+        </property>
+        <property name="rate" type="java.lang.Float">
+            <column name="rate" precision="12" scale="0" />
+        </property>
+        <property name="manufacturer" type="java.lang.String">
+            <column name="manufacturer" length="40" />
+        </property>
+        <property name="model" type="java.lang.String">
+            <column name="model" length="20" />
+        </property>
+        <property name="milesIncluded" type="java.lang.String">
+            <column name="miles_included" length="20" />
+        </property>
+        <property name="rented" type="java.lang.String">
+            <column name="rented" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

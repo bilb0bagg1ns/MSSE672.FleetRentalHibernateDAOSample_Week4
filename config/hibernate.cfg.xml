@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.username">root</property>
+        <property name="connection.password">root</property>    
+        <property name="connection.url">jdbc:mysql://localhost:3306/regis</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="show_sql">true</property>
+        
+        <mapping class="com.fhds.model.domain.Location"></mapping>
+        <mapping class="com.fhds.model.domain.Car"></mapping>
+
+ <!-- 
+NOTE:   
+We are using the annotations approach and hence no need to use the domain 
+hibernate mapping files. Provided here as merely a refrence.
+
+In NetBeans, hbm file is copied to the classes folder and hence can be
+found without having to refer to the config folder 
+        -->
+        <!--
+        <mapping resource="location.hbm.xml"/>
+        <mapping resource="cars.hbm.xml"/>
+        -->                
+        <!--
+        <mapping resource="config/location.hbm.xml" />
+        <mapping resource="config/cars.hbm.xml" />
+        -->
+        
+    </session-factory>
+</hibernate-configuration>
